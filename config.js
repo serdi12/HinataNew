@@ -18,7 +18,7 @@ global.owner = [
   ['6289516947204', '️Oᴡɴᴇʀ Teen BOTGG', true]
 ]
 global.mods = []
-global.prems = ['6289516947204']
+global.prems = []
 global.girlfren = []
 
 /*Website*/
