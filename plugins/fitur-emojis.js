@@ -5,25 +5,25 @@ const emoji = new EmojiAPI()
 let handler = async (m, { conn, args, usedPrefix, command, isPrems }) => {
 let er = `
 *[❗] Ketik seperti ini*
-*${hyjava} ${usedPrefix + command} <tipe> <emoji>*
+*${htjava} ${usedPrefix + command} <tipe> <emoji>*
 
 *${htki} Cth:*
-*${hyjava} ${usedPrefix + command}* fa 😎
+*${htjava} ${usedPrefix + command}* fa 😎
 
 *${htki} tipe* 
 
-*${hyjava} wha = whatsapp* 
-*${hyjava} ap = apple*
-*${hyjava} fa = facebook*
-*${hyjava} ig = Instagram*
-*${hyjava} go = google*
-*${hyjava} ht = htc*
-*${hyjava} mi = microsoft*
-*${hyjava} mo = mozilla*
-*${hyjava} op = openmoji*
-*${hyjava} pi = pixel*
-*${hyjava} sa = samsung*
-*${hyjava} tw = twitter*
+*${htjava} wha = whatsapp* 
+*${htjava} ap = apple*
+*${htjava} fa = facebook*
+*${htjava} ig = Instagram*
+*${htjava} go = google*
+*${htjava} ht = htc*
+*${htjava} mi = microsoft*
+*${htjava} mo = mozilla*
+*${htjava} op = openmoji*
+*${htjava} pi = pixel*
+*${htjava} sa = samsung*
+*${htjava} tw = twitter*
 
 *${htki} Gunakan emoji*`
 

@@ -43,7 +43,7 @@ wa.me/${owner[0]}
   products:[{productId: '7487741964584083'}]}],
   headerImage: { productId: '7487741964584083',
   jpegThumbnail: baper },
-  businessOwnerJid: nomorown + '@s.whatsapp.net'
+  businessOwnerJid: '0@s.whatsapp.net'
   },
   footerText: 'https://s.id/Cerdasin62',
   }},{quoted: ftroli})

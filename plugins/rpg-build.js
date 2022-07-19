@@ -8,24 +8,10 @@ let pertambangan = 6278
 
 let handler  = async (m, { conn, command, args, usedPrefix, DevMode }) => {
 
-
 let type = (args[0] || '').toLowerCase()
 let upgrade = (args[0] || '').toLowerCase()
 
 let user = global.db.data.users[m.sender]
-
-
-let caption = `
-*🚜 List Contruction For kingdoms facility*
-*List facility | 🛒Harga pembangunan*
-🏥Hospital :    ${rumahsakit}
-🌾Pertanian:    ${pertanian}
-🏕️camptroop:    ${camptroops}
-⚒️Pertambangan: ${pertambangan}
-🏯Benteng: ${benteng}
-⌨️Typing to build
-${usedPrefix}build <type>
-`
 //
         try {
                if (/build|bangun/i.test(command)) {
@@ -78,7 +64,28 @@ ${usedPrefix}build <type>
                        break
 
                        default:
-                        return conn.reply(m.chat, caption, m)
+                        return
+	const sections = [
+    {
+	title: '🚜 List Contruction For kingdoms facility',
+	rows: [
+{title: "🏯 Benteng", rowId: usedPrefix + command + ' benteng'},
+{title: "🌾 Pertanian", rowId: usedPrefix + command + ' pertanian'},
+{title: "🏕 ️camptroop", rowId: usedPrefix + command + ' camptroop'},
+{title: "⚒️ Pertambangan", rowId: usedPrefix + command + ' pertambangan'},
+{title: "🏯 Benteng", rowId: usedPrefix + command + ' hospital'}
+	]
+    }
+]
+
+const listMessage = {
+  text: `⚡ Silakan pilih build di bawah...`,
+  footer: global.wm,
+  title: `⎔───「 ${command} 」───⎔`,
+  buttonText: `☂️ Klik Disini ☂️`,
+  sections
+}
+await conn.sendMessage(m.chat, listMessage, m)
                 }
         }
     } catch (e) {

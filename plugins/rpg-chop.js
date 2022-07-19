@@ -43,7 +43,8 @@ let handler = async (m, { conn, usedPrefix, DevMode }) => {
 and you got Additional gifts
 💎diamond: ${diamond}
 `.trim()
-            conn.sendButton(m.chat, str, wm, null, [['INVENTORY', '/inv']], m)
+            await conn.sendButton(m.chat, str, wm, null, [['INVENTORY', '/inv']], m)
+            
             global.db.data.users[m.sender].kayu += kayu * 1
             global.db.data.users[m.sender].diamond += diamond * 1
             global.db.data.users[m.sender].batu += batu * 1

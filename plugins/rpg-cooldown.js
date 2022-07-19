@@ -65,7 +65,8 @@ let handler = async (m, { conn, usedPrefix }) => {
     let glimit = global.db.data.users[m.sender].glimit
     let sampah = global.db.data.users[m.sender].sampah
     let { max } = xpRange(level, exp, global.multiplier)
-    let name = m.fromMe ? conn.user : conn.contacts[m.sender]
+    let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+    let name = await conn.getName(who)
     let sortedmoney = Object.entries(global.db.data.users).sort((a, b) => b[1].money - a[1].money)
     let sortedgold = Object.entries(global.db.data.users).sort((a, b) => b[1].gold - a[1].gold)
     let sortedarlok = Object.entries(global.db.data.users).sort((a, b) => b[1].arlok - a[1].arlok)

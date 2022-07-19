@@ -47,7 +47,7 @@ artinya kamu bertaruh 100 XP.
         end = `JACKPOT! 🥳 *+${taruhan + taruhan} XP*`
         users.exp += taruhan
     } else if (a == b || a == c || b == c) {
-        end = 'TRY AGAIN!'
+        end = '*TRY AGAIN!*'
     } else {
         end = `LOSE 😥 *-${taruhan} XP*`
         users.exp -= taruhan

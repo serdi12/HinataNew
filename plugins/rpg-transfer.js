@@ -9,14 +9,17 @@ async function handler(m, { conn, args, usedPrefix, command }) {
     if (confirmation[m.sender]) return m.reply('Kamu sedang melakukan transfer!')
     let user = global.db.data.users[m.sender]
     const item = items.filter(v => v in user && typeof user[v] == 'number')
+    let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+    let name = await conn.getName(who)
     let lol = `Use format ${usedPrefix}${command} [type] [value] [number]
-example ${usedPrefix}${command} money 9999 @621927237001
+example ${usedPrefix}${command} money 9999 @${who.split("@")[0]}
 
 📍 Transferable items
 ${item.map(v => `${rpg.emoticon(v)}${v}`.trim()).join('\n')}
 `.trim()
     const type = (args[0] || '').toLowerCase()
-    if (!item.includes(type)) return m.reply(lol)
+    if (!item.includes(type)) return
+    conn.sendButton(m.chat, lol, wm, null, [['Again', '/tf' + args[0] + ' ' + args[1] + ' ' + who.split("@")[0]]], m, { mentions: this.parseMention(lol) })
     const count = Math.min(Number.MAX_SAFE_INTEGER, Math.max(1, (isNumber(args[1]) ? parseInt(args[1]) : 1))) * 1
     let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : args[2] ? (args[2].replace(/[@ .+-]/g, '') + '@s.whatsapp.net') : ''
     if (!who) return m.reply('Tag salah satu, atau ketik Nomernya!!')
@@ -26,7 +29,7 @@ ${item.map(v => `${rpg.emoticon(v)}${v}`.trim()).join('\n')}
 Are you sure you want to transfer *${count}* ${rpg.emoticon(type)}${type}${special(type)} to *@${(who || '').replace(/@s\.whatsapp\.net/g, '')}*
 Timeout *60* detik
 `.trim()
-    let c = '©games-wabot'
+    let c = global.wm
     conn.sendButton(m.chat, confirm, c, null, [['y'], ['n']], m, { mentions: [who] })
     confirmation[m.sender] = {
         sender: m.sender,

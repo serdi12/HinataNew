@@ -41,21 +41,6 @@ let _dpecat = `${pickRandom(['1', '0', '0', '1'])}`
             let dppecat = `KAMU DI PECAT KARNA ${alasanpasien}`
 //GAK RAPIH G GANTENG
 //PEMBATAS\\
-let kerjam = `
-*🧪 Contoh:*
-${usedPrefix+command} ojek
-
-*🌟 Untuk Claim Pekerjaan ketik:*
-${usedPrefix}selectjob ojek
-
-*📝List Kerja:*
-🎐Ojek
-🎐 Dokter
-🎐Petani
-🎐 Pedagang
-🎐 Montir
-🎐 Kuli
-`.trim()
 if (/kerjadulu|kerja|work/i.test(command)) {
 switch(type) {
 	case 'ojek':
@@ -105,7 +90,29 @@ global.db.data.users[m.sender].lastkerja = new Date * 1
 	m.reply(`Kamu baru saja selesai ${rumah} 🔨\nDan mendapatkan uang senilai *Rp ${duitk} 💹*`)
 break
 default:
-                        return conn.sendButton( m.chat, kerjam, `${wm}`, null, [[`Back`,'.menu']], m)
+                        return
+                        const sections = [
+    {
+	title: '🌟 List Kerjaan',
+	rows: [
+{title: "🛵 Ojek", rowId: usedPrefix + command + ' ojek'},
+{title: "🥗 Pedagang", rowId: usedPrefix + command + ' pedagang'},
+{title: "🏥 ️Dokter", rowId: usedPrefix + command + ' dokter'},
+{title: "🌾 Petani", rowId: usedPrefix + command + ' petani'},
+{title: "🏯 Montir", rowId: usedPrefix + command + ' montir'},
+{title: "⚒️ Kuli", rowId: usedPrefix + command + ' kuli'}
+	]
+    }
+]
+
+const listMessage = {
+  text: `⚡ Silakan pilih kerjaan di bawah...`,
+  footer: global.wm,
+  title: `⎔───「 ${command} 」───⎔`,
+  buttonText: `☂️ Klik Disini ☂️`,
+  sections
+}
+await conn.sendMessage(m.chat, listMessage, m)
                 }
                 }
                 

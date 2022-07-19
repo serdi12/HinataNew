@@ -6,6 +6,9 @@ const items = {
         potion: {
             money: 1250,
         },
+        aqua: {
+           money: 500
+        },
         trash: {
             money: 4,
         },
@@ -20,7 +23,40 @@ const items = {
         },
         iron: { 
         	money: 3000
-        }
+        },
+        diamond: {
+            money: 7500
+        },
+        emerald: {
+            money: 8500
+        },
+        gold: {
+            money: 3500
+        },
+        coal: {
+            money: 1500
+        },
+        common: {
+            money: 200
+        },
+        uncommon: {
+            money: 2000
+        },
+        mythic: {
+            money: 25000
+        },
+        legendary: {
+            money: 75000
+        },
+        foodpet: {
+            money: 3500
+        },
+        Fox: {
+            money: 40000
+        },
+        naga: {
+            money: 120000
+        },
     },
     sell: {
         potion: {
@@ -53,7 +89,6 @@ const items = {
     }
 }
 
-
 let handler = async (m, { command, usedPrefix, args }) => {
 let imgr = flaaa.getRandom()
     let user = global.db.data.users[m.sender]
@@ -65,10 +100,10 @@ let imgr = flaaa.getRandom()
     let buttons = ''
     text = (command.toLowerCase() == 'buy' ?
 (`
-*––––––––『 BUY 』––––––––*
+*${htki} BUY ${htka}*
 `.trim()) : 
 (`
-*––––––––『 SELL 』––––––––*
+*${htki} SELL ${htka}*
 `.trim())
 )
     footer = (command.toLowerCase() == 'buy' ?
